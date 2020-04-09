@@ -10,12 +10,12 @@ img = cv.resize(img, (700,700))
 img1 = cv.resize(img1, (700, 700))
 b,g,r = cv.split(img)
 img3 = cv.merge((b,g,r))
-img2 = cv.addWeighted(img, 0.8, img1, 0.2, 0)
+img2 = cv.addWeighted(img, 0.6, img1, 0.4, 0)
 
 # cv.imshow('girl', img)
 # cv.imshow('nature', img1)
 # cv.imshow('Whole_image', img2)
-cv.imshow('girl', img3)
+cv.imshow('girl', img2)
 
 cv.waitKey(0)
 cv.destroyAllWindows
