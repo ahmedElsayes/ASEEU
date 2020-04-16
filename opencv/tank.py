@@ -5,7 +5,7 @@ import cv2 as cv
 img = np.zeros((650, 1200, 3), np.uint8)
 start = 150
 end = 400
-T_time = 100
+T_time = 100    # adjust to control filling speed, take integers from 1 ms upward. lower mean higher speed
 font = cv.FONT_HERSHEY_SIMPLEX
 cv.rectangle(img, (start, start), (end, end), (0, 255, 0), 2) # the tank
 frame1 = cv.putText(img, 'Water Tank', (250, 250), font, 0.6, (255, 0, 0), 1, cv.LINE_AA)
@@ -23,18 +23,19 @@ threshold = 200
 diff = end-threshold
 waterlevel = 0  # fluctuates from 0 to 2 meter
 cycles = 1
-numOfCycles = 2
+numOfCycles = 1
+speed = 4   # values: 1 or 2 or 4
 while cycles <= numOfCycles:
     # activate inlet pipe and valve and deactivate outlets
-    cv.rectangle(img, (start+50, start-80), (start+80, start), (0, 0, 255), -1)   # the inlet pipe
+    cv.rectangle(img, (start+50, start-80), (start+80, start), (255, 100, 0), -1)   # the inlet pipe
     cv.rectangle(img, (start+40, start-80), (start+90, start-120), (0, 255, 0), -1)   # the inlet valve
     cv.rectangle(img, (end, end), (end+100, end-30), (0, 0, 0), -1)   # the outlet pipe
     cv.rectangle(img, (end+100, end+10), (end+150, end-40), (0, 0, 0), -1)   # the outlet valve
     while count <= end:
-        count -= 2
+        count -= speed
         # the goal is to syncronize the simulation with the change in water level
-        waterlevel += (2/diff)*2    # (the maximum level / difference of simulated rect) * count step
-        cv.rectangle(img, (end, end), (start, count), (0, 0, 255), -1)
+        waterlevel += (2/diff)*speed    # (the maximum level / difference of simulated rect) * count step
+        cv.rectangle(img, (end, end), (start, count), (255, 100, 0), -1)
         # *****to show water level*****
         # levelText = 'water level: '+str(waterlevel)
         # frame4 = cv.putText(img, levelText, (500, 350), font, 0.6, (255, 0, 0), 1, cv.LINE_AA)
@@ -48,11 +49,11 @@ while cycles <= numOfCycles:
     # activate inlet pipe and valve and deactivate outlets
     cv.rectangle(img, (start+50, start-80), (start+80, start), (0, 0, 0), -1)   # the inlet pipe
     cv.rectangle(img, (start+40, start-80), (start+90, start-120), (0, 0, 0), -1)   # the inlet valve
-    cv.rectangle(img, (end, end), (end+100, end-30), (0, 0, 255), -1)   # the outlet pipe
+    cv.rectangle(img, (end, end), (end+100, end-30), (255, 100, 0), -1)   # the outlet pipe
     cv.rectangle(img, (end+100, end+10), (end+150, end-40), (0, 255, 0), -1)   # the outlet valve
     while count >= threshold:
-        count += 2
-        waterlevel -= (2/diff)*2
+        count += speed
+        waterlevel -= (2/diff)*speed
         cv.rectangle(img, (start, threshold), (end, count), (0, 0, 0), -1)
         # *****to show water level*****
         # levelText = 'water level: '+str(waterlevel)
