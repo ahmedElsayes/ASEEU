@@ -23,7 +23,7 @@ threshold = 200
 diff = end-threshold
 waterlevel = 0  # fluctuates from 0 to 2 meter
 cycles = 1
-numOfCycles = 1
+numOfCycles = 2
 speed = 4   # values: 1 or 2 or 4
 while cycles <= numOfCycles:
     # activate inlet pipe and valve and deactivate outlets
