@@ -5,7 +5,8 @@ import CreateArea from "./CreateArea";
 type NoteType = {
   title: string;
   content: string;
-}
+  noteselect: string;
+};
 
 function Notepage() {
   const [notes, setNotes] = useState([]);
@@ -34,6 +35,7 @@ function Notepage() {
             id={index}
             title={noteItem.title}
             content={noteItem.content}
+            noteselect={noteItem.noteselect}
             onDelete={deleteNote}
           />
         );
