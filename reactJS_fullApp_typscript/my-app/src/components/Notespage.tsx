@@ -24,7 +24,6 @@ function Notepage() {
       });
     });
   }
-
   return (
     <div>
       <CreateArea onAdd={addNote} />

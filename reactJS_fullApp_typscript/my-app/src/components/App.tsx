@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Notespage from "./Notespage";
 import About from "./About";
+import Substance from "./Substance";
 import Mainform from "./loging_files/Mainform";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
@@ -27,6 +28,9 @@ function App() {
               <li className="nav-item nav-link">
                 <Link to="/register">Registration</Link>
               </li>
+              <li className="nav-item nav-link">
+                <Link to="/substance">Substance</Link>
+              </li>
             </ul>
             <hr />
           </nav>
@@ -39,6 +43,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Mainform />
+            </Route>
+            <Route path="/substance">
+              <Substance />
             </Route>
             <Route path="/">
               <Notespage />
