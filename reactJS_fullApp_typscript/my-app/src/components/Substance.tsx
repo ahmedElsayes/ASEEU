@@ -11,40 +11,46 @@ const list: string[][] = [
   ["mohamed", "ahmed", "None", "None", "None", "None"]
 ];
 // console.log(substanceList);
-const substanceList: string[]=[]
-for (let i=0; i<list.length; i++){
-  for(let ii=0; ii<= 1; ii++){
-    substanceList.push(list[i][ii]);
-  }
-}
 
 // console.log(substanceList);
 
 export default function Substance(){
-    
-  const [positionX, setPositionX] = useState("5px");
+  const substanceList: string[]=[]
+  for (let i=0; i<list.length; i++){
+    for(let ii=0; ii<= 1; ii++){
+      substanceList.push(list[i][ii]);
+    }
+  }
+  let positionX = "100px";
+  // const [positionX, setPositionX] = useState("5px");
   return (
     <div>
       {substanceList.map((label: string, index: number) => {
         console.log(label);
         switch (index) {
           case 0||6:
-            setPositionX("100px");
+            positionX = "200px";
+            // setPositionX("100px");
             break;
           case 1||7:
-            setPositionX("120px");
+            positionX = "300px";
+            // setPositionX("120px");
             break;
           case 2||8:
-            setPositionX("150px");
+            positionX = "400px";
+            // setPositionX("150px");
             break;
           case 3||9:
-            setPositionX("180px");
+            positionX = "500px";
+            // setPositionX("180px");
             break;
           case 4||10:
-            setPositionX("230px");
+            positionX = "600px";
+            // setPositionX("230px");
             break;
           case 5||11:
-            setPositionX("270px");
+            positionX = "700px";
+            // setPositionX("270px");
             break;
           default:
             break;
